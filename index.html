@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de Resultados - Laboratorios Gamboa</title>
-    <!-- Librerías para generar el PDF dinámicamente -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -207,93 +204,6 @@
             align-items: center;
             gap: 4px;
         }
-
-        /* Plantilla Oculta para Renderizar el PDF */
-        #pdfTemplateContainer {
-            position: absolute;
-            left: -9999px;
-            top: -9999px;
-        }
-
-        .pdf-page {
-            width: 800px;
-            background: #fff;
-            padding: 30px 40px;
-            font-family: Arial, sans-serif;
-            color: #000;
-            font-size: 11px;
-        }
-
-        .pdf-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #17a077;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-
-        .pdf-logo {
-            height: 60px;
-        }
-
-        .pdf-info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5px 20px;
-            background: #f9f9f9;
-            padding: 10px;
-            border: 1px solid #eee;
-            margin-bottom: 15px;
-            font-size: 11px;
-        }
-
-        .pdf-info-item span {
-            font-weight: bold;
-        }
-
-        .pdf-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 15px;
-        }
-
-        .pdf-table th {
-            background-color: #17a077;
-            color: white;
-            text-align: left;
-            padding: 6px;
-            font-size: 11px;
-        }
-
-        .pdf-table td {
-            padding: 6px;
-            border-bottom: 1px solid #ddd;
-            font-size: 10px;
-        }
-
-        .pdf-legal {
-            font-size: 8px;
-            color: #555;
-            margin-top: 20px;
-            border-t: 1px solid #ccc;
-            padding-top: 8px;
-            text-align: justify;
-        }
-
-        .pdf-signatures {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 35px;
-            text-align: center;
-            font-size: 9px;
-        }
-
-        .pdf-signature-box {
-            border-top: 1px solid #000;
-            width: 220px;
-            padding-top: 4px;
-        }
     </style>
 </head>
 <body>
@@ -346,101 +256,10 @@
         Powered by <strong style="color: #6a1b9a;">CogniTI</strong>
     </footer>
 
-    <!-- Plantilla oculta para la generación del PDF de Christian Alfredo Valenzuela Nieto -->
-    <div id="pdfTemplateContainer">
-        <div id="pdfTemplate" class="pdf-page">
-            <div class="pdf-header">
-                <img src="logo.png" class="pdf-logo" alt="Gamboa">
-                <div style="text-align: right;">
-                    <h3 style="color: #17a077; margin-bottom: 2px;">LABORATORIOS GAMBOA</h3>
-                    <p style="font-size: 10px; color: #666;">www.labgamboa.com | (664) 700-6666</p>
-                </div>
-            </div>
-
-            <div class="pdf-info-grid">
-                <div class="pdf-info-item"><span>Registro No:</span> 8263003</div>
-                <div class="pdf-info-item"><span>Cliente:</span> CLUB GAMBOA</div>
-                <div class="pdf-info-item"><span>Paciente:</span> VALENZUELA NIETO CHRISTIAN ALFREDO</div>
-                <div class="pdf-info-item"><span>Fecha Nac.:</span> 30-may.-00 (26 Años)</div>
-                <div class="pdf-info-item"><span>Sucursal:</span> ROSARITO</div>
-                <div class="pdf-info-item"><span>Sexo:</span> Masculino</div>
-                <div class="pdf-info-item"><span>Médico:</span> A QUIEN CORRESPONDA</div>
-                <div class="pdf-info-item"><span>Fecha Ingreso:</span> 26-ago.-26 14:02</div>
-                <div class="pdf-info-item"><span>Validó:</span> Q.F.B Nestor Carpena Sanchez</div>
-                <div class="pdf-info-item"><span>Fecha Impresión:</span> 27-ago.-26 14:59</div>
-            </div>
-
-            <h4 style="margin: 15px 0 8px 0; color: #17a077; border-bottom: 1px solid #17a077; padding-bottom: 3px;">
-                ANTIDOPING BASICO LEGAL
-            </h4>
-            <p style="font-size: 9px; margin-bottom: 8px; color: #444;">
-                <strong>Método:</strong> Fotometría automatizada | <strong>Tipo de Muestra:</strong> Orina
-            </p>
-
-            <table class="pdf-table">
-                <thead>
-                    <tr>
-                        <th>PRUEBA</th>
-                        <th>RESULTADO</th>
-                        <th>VALORES DE REFERENCIA / PUNTO DE CORTE</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>+ ANFETAMINAS EN ORINA</strong></td>
-                        <td style="font-weight: bold; color: green;">NEGATIVO</td>
-                        <td>NEGATIVO (Punto de corte: 1000 ng/mL)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>+ COCAINA EN ORINA</strong></td>
-                        <td style="font-weight: bold; color: green;">NEGATIVO</td>
-                        <td>NEGATIVO (Punto de Corte: 300 ng/mL)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>+ MARIHUANA EN ORINA</strong></td>
-                        <td style="font-weight: bold; color: green;">NEGATIVO</td>
-                        <td>NEGATIVO (Punto de Corte: 50 ng/mL)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>+ METANFETAMINAS EN ORINA</strong></td>
-                        <td style="font-weight: bold; color: green;">NEGATIVO</td>
-                        <td>NEGATIVO (Punto de Corte: 1000 ng/mL)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>+ OPIACEOS EN ORINA</strong></td>
-                        <td style="font-weight: bold; color: green;">NEGATIVO</td>
-                        <td>NEGATIVO (Punto de Corte: 2000 ng/mL)</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p style="font-size: 9px; margin-top: 5px;"><strong>NUMERO DE FOLIO:</strong> -8263003</p>
-
-            <div class="pdf-legal">
-                ESTE ENSAYO ESTA DESTINADO PARA UTILIZARSE EN LABORATORIOS CLINICOS, PROVEE UNICAMENTE UN RESULTADO ANALITICO PRELIMINAR. DEBERA UTILIZARSE UN METODO QUIMICO ESPECIFICO ALTERNATIVO PARA OBTENER UN RESULTADO ANALITICO CONFIRMATORIO.<br><br>
-                SE VERIFICO LA IDENTIDAD DEL PACIENTE. Este resultado de estudio es válido para la muestra que está siendo registrada y procesada en este momento, está condicionado a la variabilidad biológica y al historial clínico del paciente.
-            </div>
-
-            <div class="pdf-signatures">
-                <div class="pdf-signature-box">
-                    <strong>RESPONSABLE DEL LABORATORIO</strong><br>
-                    Q.B.P. FEDERICO GUILLERMO GAMBOA COVARRUBIAS<br>
-                    D.G.P. 5618231
-                </div>
-                <div class="pdf-signature-box">
-                    <strong>RESPONSABLE SANITARIO</strong><br>
-                    Q.F.B. FEDERICO GUILLERMO GAMBOA ELIAS<br>
-                    D.G.P. 172861
-                </div>
-            </div>
-
-            <div style="margin-top: 25px; text-align: center; font-size: 8px; color: #666; border-top: 1px stroke #eee; padding-top: 5px;">
-                Laboratorio Clínico Acreditado por EMA, A.C. con acreditación No. CL-120 | LGA-PO-RH-001-F09 REV 5 | Página 1 de 1
-            </div>
-        </div>
-    </div>
-
     <script>
+        // Pega aquí la cadena Base64 generada a partir de tu archivo PDF original
+        const pdfBase64 = "data:application/pdf;base64,JVBERi0xLj...PEAQUÍ_TU_BASE64_COMPLETO...";
+
         let currentCaptcha = "";
 
         function generateCaptcha() {
@@ -462,30 +281,35 @@
 
             if (userInput === currentCaptcha) {
                 errorMessage.style.display = "none";
-                generatePDF();
+                openPdfViewer();
             } else {
                 errorMessage.style.display = "block";
                 generateCaptcha();
             }
         }
 
-        function generatePDF() {
-            const { jsPDF } = window.jspdf;
-            const element = document.getElementById("pdfTemplate");
+        function openPdfViewer() {
+            if (pdfBase64.length < 100) {
+                alert("Pega la cadena Base64 de tu archivo PDF dentro de la variable pdfBase64 en el script.");
+                return;
+            }
 
-            html2canvas(element, { scale: 2 }).then(canvas => {
-                const imgData = canvas.toDataURL('image/png');
-                const pdf = new jsPDF('p', 'mm', 'a4');
-                const imgWidth = 210;
-                const pageHeight = 295;
-                const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+            try {
+                const base64Clean = pdfBase64.includes(',') ? pdfBase64.split(',')[1] : pdfBase64;
+                const byteCharacters = atob(base64Clean);
+                const byteNumbers = new Array(byteCharacters.length);
+                for (let i = 0; i < byteCharacters.length; i++) {
+                    byteNumbers[i] = byteCharacters.charCodeAt(i);
+                }
+                const byteArray = new Uint8Array(byteNumbers);
+                const blob = new Blob([byteArray], { type: 'application/pdf' });
+                const blobUrl = URL.createObjectURL(blob);
                 
-                // Abre el PDF generado directamente en una pestaña nueva
-                const pdfBlob = pdf.output('bloburl');
-                window.open(pdfBlob, '_blank');
-            });
+                window.open(blobUrl, '_blank');
+            } catch (err) {
+                console.error("Error al abrir el PDF:", err);
+                window.open(pdfBase64, '_blank');
+            }
         }
 
         window.onload = generateCaptcha;
